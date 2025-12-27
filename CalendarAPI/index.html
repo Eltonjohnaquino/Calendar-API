@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calendar App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Global Dark Mode Toggle (Floating) -->
+    <button id="theme-toggle" class="theme-toggle-floating" title="Toggle dark mode">
+        🌙
+    </button>
+
+    <div class="container">
+        <!-- Authentication Section -->
+        <div id="auth-section" class="auth-section">
+            <div class="auth-content">
+                <h1 class="auth-title">My Calendar</h1>
+                <p>Sign in with your Google account to view your calendar events.</p>
+                <button onclick="signIn()" class="signin-button-custom">Sign in with Google</button>
+            </div>
+        </div>
+
+        <!-- Main Content Section (shown after login) -->
+        <div id="main-section" class="main-section hidden">
+            <!-- Enhanced Header -->
+            <header class="main-header">
+                <div class="header-content">
+                    <div class="header-text">
+                        <h1>My Calendar</h1>
+                        <p class="header-subtitle">Your upcoming schedule</p>
+                        <p class="header-date" id="current-date"></p>
+                    </div>
+                    <div class="header-actions">
+                        <button id="signout-button" class="signout-button">Sign Out</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Create Event Button -->
+            <button id="add-event-btn" class="add-event-btn">➕ New Event</button>
+
+            <!-- Create Event Modal -->
+            <div id="event-modal" class="modal hidden">
+                <div class="modal-card">
+                    <h3>Create Event</h3>
+                    <input id="event-title" placeholder="Event title" />
+                    <input id="event-date" type="date" />
+                    <input id="event-time" type="time" />
+                    <div class="modal-actions">
+                        <button id="save-event" class="primary-btn">Save</button>
+                        <button id="cancel-event" class="ghost-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Loading your events...</p>
+                <div class="skeleton-container">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message hidden"></div>
+
+            <!-- Events Container -->
+            <div id="events-container" class="events-container">
+                <div id="events-list" class="events-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
